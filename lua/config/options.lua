@@ -3,4 +3,3 @@ vim.o.relativenumber = true
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-

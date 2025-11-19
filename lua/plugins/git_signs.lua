@@ -1,10 +1,8 @@
 return {
-  "lewis6991/gitsigns.nvim",
-  lazy = true,
-  config = function()
-    require('gitsigns').setup()
-  end,
-  opts = {
-    max_file_length = 5000,
-  },
+    'lewis6991/gitsigns.nvim',
+    event = 'BufReadPost',
+    config = true,
+    opts = {
+        max_file_length = 5000,
+    },
 }

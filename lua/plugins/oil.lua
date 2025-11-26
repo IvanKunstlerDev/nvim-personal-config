@@ -7,6 +7,6 @@ return {
 			show_hidden = true,
 		},
 	},
-	dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	lazy = false,
 }

@@ -1,20 +1,45 @@
-vim.keymap.set("n", "<C-l>", function()
+local map = vim.keymap.set
+
+-- Multiwindow
+map("n", "<C-l>", function()
 	vim.cmd.wincmd({ args = { "l" } })
 end)
-vim.keymap.set("n", "<C-k>", function()
+map("n", "<C-k>", function()
 	vim.cmd.wincmd({ args = { "k" } })
 end)
-vim.keymap.set("n", "<C-j>", function()
+map("n", "<C-j>", function()
 	vim.cmd.wincmd({ args = { "j" } })
 end)
-vim.keymap.set("n", "<C-h>", function()
+map("n", "<C-h>", function()
 	vim.cmd.wincmd({ args = { "h" } })
 end)
 
-vim.keymap.set("n", "L", vim.cmd.bnext)
-vim.keymap.set("n", "H", vim.cmd.bprev)
+-- Oil
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<leader>cf", function()
+-- Format
+map("n", "<leader>cf", function()
 	require("conform").format({ lsp_format = "fallback" })
 end)
+
+-- Definition / Declaration
+map("n", "gd", function()
+	vim.lsp.buf.definition()
+end, { desc = "Go to definition" })
+
+map("n", "gD", function()
+	vim.lsp.buf.declaration()
+end, { desc = "Go to declaration" })
+
+-- Buffers keymaps
+map("n", "L", vim.cmd.bnext)
+map("n", "H", vim.cmd.bprev)
+map("n", "<leader>bd", vim.cmd.bd, { desc = "Close current buffer" })
+
+-- Telescope
+local builtin = require("telescope.builtin")
+
+map("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+map("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+map("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })

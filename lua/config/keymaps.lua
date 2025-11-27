@@ -35,6 +35,7 @@ end, { desc = "Go to declaration" })
 map("n", "L", vim.cmd.bnext)
 map("n", "H", vim.cmd.bprev)
 map("n", "<leader>bd", vim.cmd.bd, { desc = "Close current buffer" })
+map("n", "<Esc>", vim.cmd.nohlsearch, { desc = "Clear search highlight" })
 
 -- Telescope
 local builtin = require("telescope.builtin")
